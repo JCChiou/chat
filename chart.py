@@ -9,21 +9,27 @@ def write_file(filename, _chart_log):
 
 def open_file(o_filename):
     data = []
-    _chart_name = []
-    _n_title = ''
-    with open(o_filename, 'r' , encoding = 'UTF-8') as f:
+    with open(o_filename, 'r' , encoding = 'UTF-8-sig') as f:
         for line in f:
-            _chart_name = line.strip()
-            if 'Allen' in _chart_name:
-                _n_title = 'Allen'
-            elif 'Tom' in _chart_name:
-                _n_title = "Tom"
-            else:
-                data.append([_n_title ,_chart_name])
+            lines = line.strip()
+            data.append(lines)
     return data
+
+def convert(_chart_name):
+    _n_title = ''
+    conv_result = []
+    for cont in _chart_name:
+        if 'Allen' in cont:
+            _n_title = 'Allen'
+        elif 'Tom' in cont:
+            _n_title = "Tom"
+        else:
+            conv_result.append([_n_title , cont])
+    return conv_result
 
 def main():
     result = open_file('input.txt')
-    write_file('output.txt' , result)
+    c_result = convert(result)
+    write_file('output.txt' , c_result)
 
 main()
