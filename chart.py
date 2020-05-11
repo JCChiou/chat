@@ -3,7 +3,7 @@ import os
 
 
 def write_file(filename, _chart_log):
-    with open(filename, 'w', encoding = 'utf-8') as f:
+    with open(filename, 'w', encoding = 'utf-8-sig') as f:
         for p in _chart_log:
             f.write(p[0] + ':' + p[1] + '\n')
 
